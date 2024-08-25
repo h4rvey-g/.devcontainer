@@ -13,14 +13,14 @@
       "installRMarkdown": true,
       "installVscDebugger": true
     },
-    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+    "ghcr.io/h4rvey-g/rocker-devcontainer-features/apt-packages:1": {
       "packages": "r-cran-data.table,r-cran-tidyverse",
       "upgradePackages": true
     },
-    "ghcr.io/rocker-org/devcontainer-features/miniforge:1": {},
-    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-      "rliger,Seurat,qs,targets"
-    }
+    // "ghcr.io/rocker-org/devcontainer-features/miniforge:1": {},
+    // "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+    //   "packages": "rliger,Seurat,qs,targets"
+    // }
   },
   "shutdownAction": "none",
   "overrideFeatureInstallOrder": [

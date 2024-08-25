@@ -13,3 +13,5 @@ echo 'if (interactive() && Sys.getenv("RSTUDIO") == "") {
 echo 'options(defaultPackages=c(getOption("defaultPackages"), "tidyverse", "targets", "qs"' >>~/.Rprofile
 # add github hosts
 curl https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts | sudo tee -a /etc/hosts
+# use pak to install "rliger,Seurat,qs,targets"
+Rscript -e 'pak::pkg_install(c("rliger","Seurat","qs","targets","crew"))'
