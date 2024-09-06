@@ -11,7 +11,8 @@
       "installDevTools": true,
       "installRadian": true,
       "installRMarkdown": true,
-      "installVscDebugger": true
+      "installVscDebugger": true,
+      "installJupyterlab": true
     },
     "ghcr.io/h4rvey-g/rocker-devcontainer-features/apt-packages:1": {
       "packages": "r-cran-data.table,r-cran-tidyverse",
