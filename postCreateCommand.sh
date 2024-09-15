@@ -14,7 +14,7 @@ curl https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts | sudo tee -a /etc/h
 # use pak to install "rliger,Seurat,qs,targets"
 Rscript -e 'pak::pkg_install(c("rliger","Seurat","qs","targets","crew", "skimr"))'
 # add library(tidyverse) and library(qs) to .Rprofile
-echo 'options(defaultPackages=c(getOption("defaultPackages"), "tidyverse", "targets", "skimr"))' >>~/.Rprofile
+echo 'options(defaultPackages=c(getOption("defaultPackages"), "tidyverse", "targets", "skimr", "gittargets"))' >>~/.Rprofile
 echo 'options(languageserver.formatting_style = function(options) {
     style <- styler::tidyverse_style(indent_by = options$tabSize)
     style$token$force_assignment_op <- NULL
