@@ -1,32 +1,25 @@
 {
   "name": "Data Science (Python and R)",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "image": "quay.io/jupyter/r-notebook:latest",
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "latest"
-    },
-    "ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {
+    "ghcr.io/h4rvey-g/rocker-devcontainer-features/r-apt:latest": {
       "vscodeRSupport": "full",
-      "installDevTools": true,
       "installRadian": true,
-      "installRMarkdown": true,
-      "installVscDebugger": true,
-      "installJupyterlab": true
-    },
-    "ghcr.io/h4rvey-g/rocker-devcontainer-features/apt-packages:1": {
-      "packages": "r-cran-data.table,r-cran-tidyverse",
-      "upgradePackages": true
-    },
-    // "ghcr.io/rocker-org/devcontainer-features/miniforge:1": {},
+      "installVscDebugger": true
+    }
+    // "ghcr.io/h4rvey-g/rocker-devcontainer-features/apt-packages:1": {
+    //   "packages": "r-cran-data.table,r-cran-tidyverse",
+    //   "upgradePackages": true
+    // },
     // "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
     //   "packages": "rliger,Seurat,qs,targets"
     // }
   },
   "shutdownAction": "none",
-  "overrideFeatureInstallOrder": [
-    "ghcr.io/rocker-org/devcontainer-features/r-apt"
-  ],
+  // "overrideFeatureInstallOrder": [
+  //   "ghcr.io/rocker-org/devcontainer-features/r-apt"
+  // ],
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "/bin/bash ./.devcontainer/postCreateCommand.sh",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -68,5 +61,5 @@
     }
   },
   // Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-  "remoteUser": "vscode"
+  "remoteUser": "jovyan"
 }

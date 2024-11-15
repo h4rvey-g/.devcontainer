@@ -1,10 +1,8 @@
-pip install ipykernel ipywidgets
-
-if [ -f requirements.txt* ]; then
-  pip install -r requirements.txt
-else pip install pandas numpy matplotlib seaborn scikit-learn; fi
+# if [ -f requirements.txt* ]; then
+#   pip install -r requirements.txt
+# else pip install pandas numpy matplotlib seaborn scikit-learn; fi
 # fix permission issue
-sudo chmod 777 /usr/local/lib/R/site-library/_cache/
+# sudo chmod 777 /usr/local/lib/R/site-library/_cache/
 # enable vscode R support
 echo 'if (interactive() && Sys.getenv("RSTUDIO") == "") {
   source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"), ".vscode-R", "init.R"))
