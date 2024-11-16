@@ -5,20 +5,20 @@
     "dockerfile": "Dockerfile"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": {
-    "ghcr.io/h4rvey-g/rocker-devcontainer-features/r-apt:latest": {
-      "vscodeRSupport": "full",
-      "installRadian": true,
-      "installVscDebugger": false
-    }
-    // "ghcr.io/h4rvey-g/rocker-devcontainer-features/apt-packages:1": {
-    //   "packages": "r-cran-data.table,r-cran-tidyverse",
-    //   "upgradePackages": true
-    // },
-    // "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
-    //   "packages": "rliger,Seurat,qs,targets"
-    // }
-  },
+  // "features": {
+  //   "ghcr.io/h4rvey-g/rocker-devcontainer-features/r-apt:latest": {
+  //     "vscodeRSupport": "full",
+  //     "installRadian": true,
+  //     "installVscDebugger": false
+  //   }
+  //   // "ghcr.io/h4rvey-g/rocker-devcontainer-features/apt-packages:1": {
+  //   //   "packages": "r-cran-data.table,r-cran-tidyverse",
+  //   //   "upgradePackages": true
+  //   // },
+  //   // "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+  //   //   "packages": "rliger,Seurat,qs,targets"
+  //   // }
+  // },
   "shutdownAction": "none",
   // "overrideFeatureInstallOrder": [
   //   "ghcr.io/rocker-org/devcontainer-features/r-apt"
@@ -63,7 +63,8 @@
         "GitHub.copilot",
         "GitHub.copilot-chat",
         "ms-python.black-formatter",
-        "samueltscott.maximizeterminal"
+        "samueltscott.maximizeterminal",
+        "ms-azuretools.vscode-docker"
       ]
     }
   },
