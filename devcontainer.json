@@ -1,12 +1,15 @@
 {
   "name": "Data Science (Python and R)",
-  "image": "quay.io/jupyter/r-notebook:latest",
+  "build": {
+    // Path is relative to the devcontainer.json file.
+    "dockerfile": "Dockerfile"
+  },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/h4rvey-g/rocker-devcontainer-features/r-apt:latest": {
       "vscodeRSupport": "full",
       "installRadian": true,
-      "installVscDebugger": true
+      "installVscDebugger": false
     }
     // "ghcr.io/h4rvey-g/rocker-devcontainer-features/apt-packages:1": {
     //   "packages": "r-cran-data.table,r-cran-tidyverse",
@@ -22,6 +25,10 @@
   // ],
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "/bin/bash ./.devcontainer/postCreateCommand.sh",
+  // "RunArgs": [
+  //   "--user",
+  //   "root"
+  // ],
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   // Configure tool-specific properties.
