@@ -10,12 +10,13 @@ USER ${NB_USER}
 RUN pip install --no-cache-dir radian && \
     Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' && \
     mamba install --yes \
-    bioconda::bioconductor-rhtslib && \
+    bioconda::bioconductor-rhtslib \
     conda-forge::r-leidenalg && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-RUN Rscript -e 'pak::pkg_install(c("rliger", "Seurat", "qs", "targets", "crew", "skimr", "tidyseurat", "languageserver", "tidySummarizedExperiment"))'
+RUN Rscript -e 'pak::pkg_install(c("rliger", "Seurat", "qs", "targets", "crew", "skimr", "tidyseurat", "languageserver", \
+    "tidySummarizedExperiment", "httpgd", "gittargets"))'
 
 # RUN mamba install --yes \
 #     bioconda::r-liger \

@@ -51,7 +51,8 @@
           ]
         },
         "[r]": {
-          "rterm.linux": "/usr/local/bin/radian",
+          "rpath.linux": "/opt/conda/bin/R",
+          "rterm.linux": "/opt/conda/bin/radian",
           "r.bracketedPaste": true
         }
       },
