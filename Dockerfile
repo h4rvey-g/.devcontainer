@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir radian && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-RUN Rscript -e 'pak::pkg_install(c("rliger","Seurat","qs","targets","crew", "skimr", "tidyomics", "languageserver"))'
+RUN Rscript -e 'pak::pkg_install(c("rliger", "Seurat", "qs", "targets", "crew", "skimr", "tidyseurat", "languageserver", "tidySummarizedExperiment"))'
 
 # RUN mamba install --yes \
 #     bioconda::r-liger \
