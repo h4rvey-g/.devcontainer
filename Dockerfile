@@ -9,7 +9,11 @@ RUN apt-get update && apt-get install -y build-essential libsz2 libhdf5-dev gh &
 USER ${NB_USER}
 RUN pip install --no-cache-dir radian && \
     Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' && \
-    Rscript -e 'pak::pkg_install("Rhtslib")'
+    mamba install --yes \
+    bioconda::bioconductor-rhtslib && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
 RUN Rscript -e 'pak::pkg_install(c("rliger","Seurat","qs","targets","crew", "skimr", "tidyomics", "languageserver"))'
 
 # RUN mamba install --yes \
