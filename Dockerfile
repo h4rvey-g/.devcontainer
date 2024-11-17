@@ -40,8 +40,7 @@ RUN apt-get update \
     r-base-dev \
     r-recommended \
     r-cran-docopt \
-    && chown root:staff "/usr/local/lib/R/site-library" \
-    && chmod g+ws "/usr/local/lib/R/site-library" \
+    && chmod a+ws "/usr/local/lib/R/site-library" \
     && ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin/install.r \
     && ln -s /usr/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
     && ln -s /usr/lib/R/site-library/littler/examples/installBioc.r /usr/local/bin/installBioc.r \
