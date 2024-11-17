@@ -14,14 +14,22 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Build Image
-      id: build-image
-      uses: redhat-actions/buildah-build@v2
+    # - name: Build Image
+    #   id: build-image
+    #   uses: redhat-actions/buildah-build@v2
+    #   with:
+    #     image: datascience
+    #     tags: latest ${{ github.sha }}
+    #     containerfiles: |
+    #       ./Dockerfile
+    # get a hello world image to test push
+    - name: Run hello world
+      id: run-hello-world
+      uses: redhat-actions/buildah-run@v2
       with:
-        image: datascience
+        image: hello-world
         tags: latest ${{ github.sha }}
-        containerfiles: |
-          ./Dockerfile
+        base-image: docker.io/library/hello-world:latest
 
     # Podman Login action (https://github.com/redhat-actions/podman-login) also be used to log in,
     # in which case 'username' and 'password' can be omitted.
@@ -29,9 +37,9 @@ jobs:
       id: push-to-quay
       uses: redhat-actions/push-to-registry@v2
       with:
-        image: ${{ steps.build-image.outputs.image }}
-        tags: ${{ steps.build-image.outputs.tags }}
-        registry: quay.io/quay-user
+        image: ${{ steps.run-hello-world.outputs.image }}
+        tags: ${{ steps.run-hello-world.outputs.tags }}
+        registry: quay.io/babaolanqiu
         username: babaolanqiu
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
