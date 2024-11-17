@@ -25,7 +25,7 @@ jobs:
     # get a hello world image to test push
     - name: Run hello world
       id: run-hello-world
-      uses: redhat-actions/buildah-run@v2
+      uses: redhat-actions/buildah-build@v2
       with:
         image: hello-world
         tags: latest ${{ github.sha }}
