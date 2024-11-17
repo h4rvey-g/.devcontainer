@@ -8,7 +8,7 @@ echo 'if (interactive() && Sys.getenv("RSTUDIO") == "") {
   source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"), ".vscode-R", "init.R"))
 }' >>~/.Rprofile
 # add github hosts
-curl https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts | sudo tee -a /etc/hosts
+sudo sed -i "/# fetch-github-hosts begin/Q" /etc/hosts && sudo curl https://hosts.gitcdn.top/hosts.txt >> /etc/hosts
 # use pak to install "rliger,Seurat,qs,targets"
 # add library(tidyverse) and library(qs) to .Rprofile
 echo 'options(defaultPackages=c(getOption("defaultPackages"), "tidyverse", "targets", "skimr", "gittargets"))' >>~/.Rprofile
