@@ -10,8 +10,8 @@ USER ${NB_USER}
 RUN pip install --no-cache-dir radian && \
     Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' && \
     mamba install --yes \
-    bioconda::bioconductor-rhtslib \
-    conda-forge::r-leidenalg && \
+    bioconda::bioconductor-rhtslib && \
+    # conda-forge::r-leidenalg && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
