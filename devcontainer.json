@@ -1,9 +1,6 @@
 {
   "name": "Data Science (Python and R)",
-  "build": {
-    // Path is relative to the devcontainer.json file.
-    "dockerfile": "Dockerfile"
-  },
+  "image": "quay.io/babaolanqiu/datascience:latest",
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {
   //   "ghcr.io/h4rvey-g/rocker-devcontainer-features/r-apt:latest": {
@@ -51,7 +48,7 @@
           ]
         },
         "[r]": {
-          "rpath.linux": "/opt/conda/bin/R",
+          "rpath.linux": "/usr/bin/R",
           "rterm.linux": "/opt/conda/bin/radian",
           "r.bracketedPaste": true
         }

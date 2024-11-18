@@ -57,7 +57,7 @@ RUN apt-get update && apt-get install -y build-essential libsz2 libhdf5-dev gh l
 USER ${NB_USER}
 RUN pip install --no-cache-dir radian && \
     Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
-RUN Rscript -e 'pak::pkg_install(c("rliger", "Seurat", "qs", "targets", "crew", "skimr", "tidyseurat", "languageserver", "tidySummarizedExperiment", "httpgd", "gittargets"))'
+RUN Rscript -e 'pak::pkg_install(c("tidyverse", "rliger", "Seurat", "qs", "targets", "crew", "skimr", "tidyseurat", "languageserver", "tidySummarizedExperiment", "httpgd", "gittargets", "huayc09/SeuratExtend", "harmony"))'
 
 # RUN mamba install --yes \
 #     bioconda::r-liger \

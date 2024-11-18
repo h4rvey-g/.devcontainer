@@ -2,13 +2,13 @@
 #   pip install -r requirements.txt
 # else pip install pandas numpy matplotlib seaborn scikit-learn; fi
 # fix permission issue
-# sudo chmod 777 /usr/local/lib/R/site-library/_cache/
+sudo chmod 777 /usr/local/lib/R/site-library/_cache/
 # enable vscode R support
 echo 'if (interactive() && Sys.getenv("RSTUDIO") == "") {
   source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"), ".vscode-R", "init.R"))
 }' >>~/.Rprofile
 # add github hosts
-sudo sed -i "/# fetch-github-hosts begin/Q" /etc/hosts && sudo curl https://hosts.gitcdn.top/hosts.txt >> /etc/hosts
+# sudo sh -c 'curl https://hosts.gitcdn.top/hosts.txt >> /etc/hosts'
 # use pak to install "rliger,Seurat,qs,targets"
 # add library(tidyverse) and library(qs) to .Rprofile
 echo 'options(defaultPackages=c(getOption("defaultPackages"), "tidyverse", "targets", "skimr", "gittargets"))' >>~/.Rprofile
