@@ -61,7 +61,7 @@ USER ${NB_USER}
 RUN pip install --no-cache-dir radian scanpy && \
     Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
 RUN Rscript -e 'pak::pkg_install(c("tidyverse", "rliger", "Seurat", "qs", "targets", "crew", "skimr", "tidyseurat", "languageserver", "tidySummarizedExperiment", "httpgd", "gittargets", "huayc09/SeuratExtend", "harmony"))'
-
+RUN eval "$(curl https://get.x-cmd.com)"
 # RUN mamba install --yes \
 #     bioconda::r-liger \
 #     conda-forge::r-seurat \
