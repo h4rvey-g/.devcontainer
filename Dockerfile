@@ -78,4 +78,4 @@ RUN Rscript -e 'pak::pkg_install(c( \
     "samuel-marsh/scCustomize@release/3.0.0" \
     ))'
 RUN eval "$(curl https://get.x-cmd.com)"
-RUN wget -qO- https://quarto.org/docs/downloads/quarto-linux-amd64.deb | sudo dpkg -i -
+RUN wget -qO- https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb | sudo dpkg -i -
