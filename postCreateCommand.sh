@@ -25,3 +25,4 @@ echo 'linters: linters_with_defaults(
 # set git user name "h4rvey-g" and email "babaolanqiu@gmail.com"
 git config --global user.name "h4rvey-g"
 git config --global user.email "babaolanqiu@gmail.com"
+export PATH=~/bin:$PATH
