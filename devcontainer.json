@@ -51,7 +51,8 @@
           "rpath.linux": "/usr/bin/R",
           "rterm.linux": "/opt/conda/bin/radian",
           "r.bracketedPaste": true
-        }
+        },
+        "quarto.path": "/usr/local/bin/quarto"
       },
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
@@ -64,7 +65,8 @@
         "samueltscott.maximizeterminal",
         "ms-azuretools.vscode-docker",
         "ms-toolsai.datawrangler",
-        "WakaTime.vscode-wakatime"
+        "WakaTime.vscode-wakatime",
+        "quarto.quarto"
       ]
     }
   },
