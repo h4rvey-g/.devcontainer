@@ -58,7 +58,7 @@ RUN echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/added-by-start-sc
 RUN apt-get update && apt-get install -y build-essential libsz2 libhdf5-dev gh libgmp-dev
 
 USER ${NB_USER}
-RUN pip install --no-cache-dir radian scanpy quarto-cli && \
+RUN pip install --no-cache-dir radian scanpy && \
     Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
 RUN Rscript -e 'pak::pkg_install(c( \
     "tidyverse", \
@@ -78,16 +78,4 @@ RUN Rscript -e 'pak::pkg_install(c( \
     "samuel-marsh/scCustomize@release/3.0.0" \
     ))'
 RUN eval "$(curl https://get.x-cmd.com)"
-# RUN mamba install --yes \
-#     bioconda::r-liger \
-#     conda-forge::r-seurat \
-#     conda-forge::r-qs \
-#     conda-forge::r-targets \
-#     conda-forge::r-crew \
-#     conda-forge::r-skimr \
-#     conda-forge::r-tidyseurat \
-#     bioconda::bioconductor-tidysummarizedexperiment \
-#     conda-forge::r-languageserver && \
-#     mamba clean --all -f -y && \
-#     fix-permissions "${CONDA_DIR}" && \
-#     fix-permissions "/home/${NB_USER}"
+RUN wget -qO- https://quarto.org/docs/downloads/quarto-linux-amd64.deb | sudo dpkg -i -
