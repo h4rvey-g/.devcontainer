@@ -79,3 +79,4 @@ RUN Rscript -e 'pak::pkg_install(c( \
     ))'
 RUN eval "$(curl https://get.x-cmd.com)"
 RUN wget -qO- https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb | sudo dpkg -i -
+RUN quarto install tinytex
