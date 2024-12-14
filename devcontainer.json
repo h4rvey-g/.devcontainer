@@ -1,6 +1,7 @@
 {
   "name": "Data Science (Python and R)",
   "image": "quay.io/babaolanqiu/datascience:latest",
+  "initializeCommand": "docker pull quay.io/babaolanqiu/datascience:latest",
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {
   //   "ghcr.io/h4rvey-g/rocker-devcontainer-features/r-apt:latest": {
