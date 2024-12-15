@@ -67,7 +67,8 @@
         "ms-azuretools.vscode-docker",
         "ms-toolsai.datawrangler",
         "WakaTime.vscode-wakatime",
-        "quarto.quarto"
+        "quarto.quarto",
+        "mechatroner.rainbow-csv"
       ]
     }
   },
