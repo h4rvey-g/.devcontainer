@@ -9,12 +9,22 @@ jobs:
   build:
     if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     name: Build and push image
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Delete huge unnecessary tools folder
         run: rm -rf /opt/hostedtoolcache
       - uses: actions/checkout@v4
+
+      - name: Install dependencies for overlay
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y overlayfs-tools
+
+      - name: Configure overlay device
+        run: |
+          sudo mkdir -p /var/lib/overlay
+          sudo mount -t overlay overlay -o lowerdir=/var/lib/overlay/lower,upperdir=/var/lib/overlay/upper,workdir=/var/lib/overlay/work /var/lib/overlay/merged
 
       - name: Build Image
         id: build-image
@@ -25,8 +35,6 @@ jobs:
           containerfiles: |
             ./Dockerfile
 
-      # Podman Login action (https://github.com/redhat-actions/podman-login) also be used to log in,
-      # in which case 'username' and 'password' can be omitted.
       - name: Push To quay.io
         id: push-to-quay
         uses: redhat-actions/push-to-registry@v2
