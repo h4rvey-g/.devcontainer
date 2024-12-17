@@ -58,7 +58,7 @@ RUN echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/added-by-start-sc
 RUN apt-get update && apt-get install -y build-essential libsz2 libhdf5-dev gh libgmp-dev
 
 USER ${NB_USER}
-RUN pip install --no-cache-dir radian scanpy && \
+RUN pip install --no-cache-dir radian scanpy leidenalg && \
     Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
 RUN Rscript -e 'pak::pkg_install(c( \
     "tidyverse", \
@@ -75,6 +75,8 @@ RUN Rscript -e 'pak::pkg_install(c( \
     "gittargets", \
     "huayc09/SeuratExtend", \
     "harmony", \
+    "DESeq2", \
+    "scuttle", \
     "samuel-marsh/scCustomize@release/3.0.0" \
     ))'
 RUN eval "$(curl https://get.x-cmd.com)"
