@@ -62,7 +62,6 @@ RUN pip install --no-cache-dir radian scanpy leidenalg && \
     Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
 RUN Rscript -e 'pak::pkg_install(c( \
     "tidyverse", \
-    "rliger", \
     "Seurat", \
     "qs", \
     "targets", \
@@ -77,6 +76,7 @@ RUN Rscript -e 'pak::pkg_install(c( \
     "harmony", \
     "DESeq2", \
     "scuttle", \
+    "tidyplots", \
     "samuel-marsh/scCustomize@release/3.0.0" \
     ))'
 RUN eval "$(curl https://get.x-cmd.com)"
