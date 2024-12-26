@@ -70,6 +70,7 @@ RUN Rscript -e 'pak::pkg_install(c( \
     "tidyseurat", \
     "languageserver", \
     "tidySummarizedExperiment", \
+    "tidybulk", \
     "httpgd", \
     "gittargets", \
     "huayc09/SeuratExtend", \
