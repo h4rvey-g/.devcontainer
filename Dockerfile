@@ -83,3 +83,15 @@ RUN Rscript -e 'pak::pkg_install(c( \
 RUN eval "$(curl https://get.x-cmd.com)"
 RUN wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb -O /tmp/quarto.deb && sudo dpkg -i /tmp/quarto.deb && rm /tmp/quarto.deb
 # RUN quarto install tinytex
+# Install SDKMAN and Java
+RUN curl -s "https://get.sdkman.io" | bash && \
+    bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
+    sdk install java 17.0.10-tem"
+
+# Install Nextflow
+RUN curl -s https://get.nextflow.io | bash && \
+    mkdir -p $HOME/bin && \
+    mv nextflow $HOME/bin/
+
+ENV PATH=$PATH:$HOME/bin
+
