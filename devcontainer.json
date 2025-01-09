@@ -3,9 +3,9 @@
   "image": "quay.io/babaolanqiu/datascience:latest",
   "initializeCommand": "docker pull quay.io/babaolanqiu/datascience:latest",
   // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
+  // "features": {
+  // "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  // },
   "shutdownAction": "none",
   // "overrideFeatureInstallOrder": [
   //   "ghcr.io/rocker-org/devcontainer-features/r-apt"
