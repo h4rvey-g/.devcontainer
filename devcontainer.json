@@ -37,9 +37,8 @@
             "jsdelivr.com"
           ]
         },
-        "[r]": {
-          "rpath.linux": "/usr/bin/R",
-          "rterm.linux": "/opt/conda/bin/radian",
+          "r.rpath.linux": "/usr/bin/R",
+          "r.rterm.linux": "/opt/conda/bin/radian",
           "r.bracketedPaste": true
         },
         "quarto.path": "/usr/local/bin/quarto"
