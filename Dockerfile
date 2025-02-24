@@ -64,8 +64,8 @@ RUN conda install --yes \
     bioconda::scanpy \
     conda-forge::leidenalg && \
     conda clean --all -f -y && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
+    sudo fix-permissions "${CONDA_DIR}" && \
+    sudo fix-permissions "/home/${NB_USER}"
 
 RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
 RUN Rscript -e 'pak::pkg_install(c( \
