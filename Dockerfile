@@ -58,8 +58,15 @@ RUN echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/added-by-start-sc
 RUN apt-get update && apt-get install -y build-essential libsz2 libhdf5-dev gh libgmp-dev
 
 USER ${NB_USER}
-RUN pip install --no-cache-dir radian scanpy leidenalg && \
-    Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
+RUN mamba install --yes \
+    radian \
+    bioconda::scanpy \
+    conda-forge::leidenalg && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
 RUN Rscript -e 'pak::pkg_install(c( \
     "tidyverse", \
     "Seurat", \
