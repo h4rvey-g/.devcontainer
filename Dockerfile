@@ -61,8 +61,8 @@ USER ${NB_USER}
 SHELL ["/bin/bash", "-l", "-c"]
 RUN conda install --yes \
     radian \
-    conda-forge::hdf5 \
-    bioconda::scanpy \
+    'conda-forge::hdf5=1.14' \
+    conda-forge::scanpy \
     conda-forge::leidenalg && \
     conda clean --all -f -y
 # *** DIAGNOSTIC STEP - Add this to your Dockerfile ***
