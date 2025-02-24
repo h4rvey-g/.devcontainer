@@ -63,11 +63,12 @@ RUN conda install --yes \
     radian \
     bioconda::scanpy \
     conda-forge::hdf5 \
+    conda-forge::r-hdf5r \
     conda-forge::leidenalg && \
     conda clean --all -f -y
 
 RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
-RUN Rscript -e 'install.packages("hdf5r", configure.args="--with-hdf5=/usr/bin/h5cc")'
+# RUN Rscript -e 'install.packages("hdf5r", configure.args="--with-hdf5=/usr/bin/h5cc")'
 RUN Rscript -e 'pak::pkg_install(c( \
     "tidyverse", \
     "Seurat", \
