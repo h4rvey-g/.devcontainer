@@ -1,28 +1,48 @@
 # .devcontainer
 
-This is a devcontainer configuration file for setting up a development environment for Data Science projects using Python and R in Visual Studio Code.
+This is a devcontainer configuration for setting up a Data Science development environment with Python and R in Visual Studio Code.
 
-The container is named "Data Science (Python and R)" and is built using a Dockerfile located in the same directory as this devcontainer.json file.
+## Main Features
 
-Features:
-- Adds R support with full VSCode integration, radian, and without the VSC debugger.
-- Additional features for installing specific R packages and apt packages are commented out.
+### Base Environment
+- Based on Jupyter minimal-notebook image
+- Complete development environment for Python and R
+- Pre-installed Quarto v1.6.39 documentation tool
 
-The container is configured to not shut down automatically when VS Code is closed.
+### Python Environment
+- Includes common data analysis packages:
+  - scanpy
+  - leidenalg
+  - pandas, numpy, and other basic packages
 
-A post-create command is specified to run a script after the container is created.
+### R Environment
+- Full R development support, including radian terminal
+- Pre-installed bioinformatics and data analysis packages:
+  - tidyverse suite
+  - Seurat and extensions
+  - DESeq2
+  - harmony
+  - targets workflow tool
+  - and other analysis packages
 
-Customizations for VS Code:
-- Python settings: Sets the default interpreter path, formatter, and enables format on type/save.
-- Jupyter settings: Configures theme for Matplotlib plots and widget script sources.
-- R settings: Configures radian as the R terminal and enables bracketed paste.
+### Development Tool Configuration
+- Git preset configuration
+- R language server formatting settings
+- lintr code checking configuration
+- VSCode extensions and settings
 
-Extensions to be installed in the container:
-- Jupyter
-- Python
-- R support
-- GitHub Copilot and Copilot Chat
-- Black formatter for Python
-- Maximize Terminal
+### System Tools
+- Basic development tools: vim, htop, parallel, etc.
+- Complete build environment: build-essential
+- GitHub CLI tools
 
-The container connects as the user "jovyan" by default.
+## Usage Instructions
+
+The container automatically configures all necessary environments, including:
+- R package installation and configuration
+- Development environment permissions
+- VSCode integration setup
+
+Runs as `jovyan` user by default, with sudo privileges for environment configuration.
+
+The container executes postCreateCommand.sh for final configuration upon creation.
