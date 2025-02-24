@@ -1,7 +1,7 @@
 {
   "name": "Data Science (Python and R)",
   "image": "quay.io/babaolanqiu/datascience:latest",
-  "initializeCommand": "docker pull quay.io/babaolanqiu/datascience:latest",
+  // "initializeCommand": "docker pull quay.io/babaolanqiu/datascience:latest",
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {
   // "ghcr.io/devcontainers/features/docker-in-docker:2": {}
@@ -58,8 +58,7 @@
         "quarto.quarto",
         "mechatroner.rainbow-csv"
       ]
-    }
-  },
+    },
   // Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "jovyan"
 }
