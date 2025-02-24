@@ -66,8 +66,7 @@ RUN conda install --yes \
     conda clean --all -f -y
 
 RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
-ENV LD_PRELOAD=/opt/conda/lib/libhdf5.so:/opt/conda/lib/libhdf5_hl.so
-RUN Rscript -e 'install.packages("hdf5r")'
+RUN Rscript -e 'install.packages("hdf5r", configure.args="--with-hdf5=/usr/bin/h5cc")'
 RUN Rscript -e 'pak::pkg_install(c( \
     "tidyverse", \
     "Seurat", \
