@@ -56,7 +56,7 @@ RUN apt-get update \
 
 # add ${NB_UID} to NOPASSWD sudoers
 RUN echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/added-by-start-script
-RUN apt-get update && apt-get install -y build-essential libsz2 gh libgmp-dev
+RUN apt-get update && apt-get install -y build-essential libsz2 gh libgmp-dev libcurl4-openssl-dev
 
 USER ${NB_USER}
 SHELL ["/bin/bash", "-l", "-c"]
