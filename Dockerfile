@@ -58,11 +58,12 @@ RUN echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/added-by-start-sc
 RUN apt-get update && apt-get install -y build-essential libsz2 libhdf5-dev gh libgmp-dev
 
 USER ${NB_USER}
-RUN mamba install --yes \
+SHELL ["/bin/bash", "-l", "-c"]
+RUN conda install --yes \
     radian \
     bioconda::scanpy \
     conda-forge::leidenalg && \
-    mamba clean --all -f -y && \
+    conda clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
