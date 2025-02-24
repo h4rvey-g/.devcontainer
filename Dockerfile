@@ -76,7 +76,7 @@ RUN Rscript -e 'pak::pkg_install(c( \
     "languageserver", \
     "tidySummarizedExperiment", \
     "tidybulk", \
-    "httpgd", \
+    "nx10/httpgd", \
     "gittargets", \
     "huayc09/SeuratExtend", \
     "harmony", \
