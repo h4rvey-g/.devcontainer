@@ -55,18 +55,19 @@ RUN apt-get update \
 
 # add ${NB_UID} to NOPASSWD sudoers
 RUN echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/added-by-start-script
-RUN apt-get update && apt-get install -y build-essential libsz2 libhdf5-dev gh libgmp-dev
+RUN apt-get update && apt-get install -y build-essential libsz2 gh libgmp-dev
 
 USER ${NB_USER}
 SHELL ["/bin/bash", "-l", "-c"]
 RUN conda install --yes \
     radian \
+    conda-forge::hdf5 \
     bioconda::scanpy \
     conda-forge::leidenalg && \
     conda clean --all -f -y
 
 RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
-RUN Rscript -e 'install.packages("hdf5r", configure.args="--with-hdf5=/usr)'
+RUN Rscript -e 'install.packages("hdf5r")'
 RUN Rscript -e 'pak::pkg_install(c( \
     "tidyverse", \
     "Seurat", \
