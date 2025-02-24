@@ -43,6 +43,7 @@ RUN apt-get update \
     r-base-dev \
     r-recommended \
     r-cran-docopt \
+    r-cran-hdf5r \
     && chmod a+ws "/usr/local/lib/R/site-library" \
     && ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin/install.r \
     && ln -s /usr/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
@@ -61,14 +62,14 @@ USER ${NB_USER}
 SHELL ["/bin/bash", "-l", "-c"]
 RUN conda install --yes \
     radian \
-    'conda-forge::hdf5=1.14' \
+    # 'conda-forge::hdf5=1.14' \
     conda-forge::scanpy \
     conda-forge::leidenalg && \
     conda clean --all -f -y
 # *** DIAGNOSTIC STEP - Add this to your Dockerfile ***
 RUN find /opt/conda/lib -name "libhdf5_hl*"
 RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
-RUN Rscript -e 'install.packages("hdf5r")'
+# RUN Rscript -e 'install.packages("hdf5r")'
 # RUN Rscript -e 'pak::pkg_install(c( \
 #     "tidyverse", \
 #     "Seurat", \
