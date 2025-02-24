@@ -62,6 +62,7 @@ SHELL ["/bin/bash", "-l", "-c"]
 RUN conda install --yes \
     radian \
     bioconda::scanpy \
+    conda-forge::hdf5 \
     conda-forge::leidenalg && \
     conda clean --all -f -y
 
