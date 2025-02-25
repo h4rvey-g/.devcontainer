@@ -43,7 +43,6 @@ RUN apt-get update \
     r-base-dev \
     r-recommended \
     r-cran-docopt \
-    # r-cran-hdf5r \
     && chmod a+ws "/usr/local/lib/R/site-library" \
     && ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin/install.r \
     && ln -s /usr/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r \
@@ -71,7 +70,7 @@ RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.e
 # RUN mkdir -p /usr/local/lib/R/etc && \
 #     touch /usr/local/lib/R/etc/Renviron.site && \
 #     echo 'R_LD_LIBRARY_PATH=/opt/conda/lib:$R_LD_LIBRARY_PATH' >> /usr/local/lib/R/etc/Renviron.site
-RUN Rscript -e 'install.packages("hdf5r")'
+RUN R -e 'install.packages("hdf5r", configure.args="--with-hdf5=/usr/bin/h5cc")'
 # RUN Rscript -e 'pak::pkg_install(c( \
 #     "tidyverse", \
 #     "Seurat", \
