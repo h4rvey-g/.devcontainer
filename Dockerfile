@@ -71,27 +71,27 @@ RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.e
 #     touch /usr/local/lib/R/etc/Renviron.site && \
 #     echo 'R_LD_LIBRARY_PATH=/opt/conda/lib:$R_LD_LIBRARY_PATH' >> /usr/local/lib/R/etc/Renviron.site
 RUN PATH=/usr/bin:$PATH Rscript -e 'install.packages("hdf5r", configure.args="--with-hdf5=/usr/bin/h5cc")'
-# RUN Rscript -e 'pak::pkg_install(c( \
-#     "tidyverse", \
-#     "Seurat", \
-#     "targets", \
-#     "crew", \
-#     "skimr", \
-#     "tidyseurat", \
-#     "languageserver", \
-#     "tidySummarizedExperiment", \
-#     "tidybulk", \
-#     "nx10/httpgd", \
-#     "gittargets", \
-#     "huayc09/SeuratExtend", \
-#     "harmony", \
-#     "DESeq2", \
-#     "scuttle", \
-#     "tidyplots", \
-#     "samuel-marsh/scCustomize@release/3.0.0" \
-#     ))' && \
-#     Rscript -e 'remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2")'
-# RUN eval "$(curl https://get.x-cmd.com)"
-# RUN wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb -O /tmp/quarto.deb && sudo dpkg -i /tmp/quarto.deb && rm /tmp/quarto.deb
-# # RUN quarto install tinytex
+RUN Rscript -e 'pak::pkg_install(c( \
+    "tidyverse", \
+    "Seurat", \
+    "targets", \
+    "crew", \
+    "skimr", \
+    "tidyseurat", \
+    "languageserver", \
+    "tidySummarizedExperiment", \
+    "tidybulk", \
+    "nx10/httpgd", \
+    "gittargets", \
+    "huayc09/SeuratExtend", \
+    "harmony", \
+    "DESeq2", \
+    "scuttle", \
+    "tidyplots", \
+    "samuel-marsh/scCustomize@release/3.0.0" \
+    ))' && \
+    Rscript -e 'remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2")'
+RUN eval "$(curl https://get.x-cmd.com)"
+RUN wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb -O /tmp/quarto.deb && sudo dpkg -i /tmp/quarto.deb && rm /tmp/quarto.deb
+# RUN quarto install tinytex
 
