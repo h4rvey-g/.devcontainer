@@ -68,8 +68,9 @@ RUN conda install --yes \
 # *** DIAGNOSTIC STEP - Add this to your Dockerfile ***
 RUN find /opt/conda/lib -name "libhdf5_hl*"
 RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
-# Add /opt/conda/lib to R's library search path.  This is the key change.
-RUN echo 'R_LD_LIBRARY_PATH=/opt/conda/lib:$R_LD_LIBRARY_PATH' >> /usr/local/lib/R/etc/Renviron.site
+RUN mkdir -p /usr/local/lib/R/etc && \
+    touch /usr/local/lib/R/etc/Renviron.site && \
+    echo 'R_LD_LIBRARY_PATH=/opt/conda/lib:$R_LD_LIBRARY_PATH' >> /usr/local/lib/R/etc/Renviron.site
 RUN Rscript -e 'install.packages("hdf5r")'
 # RUN Rscript -e 'pak::pkg_install(c( \
 #     "tidyverse", \
