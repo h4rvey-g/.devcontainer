@@ -61,38 +61,39 @@ RUN apt-get update && apt-get install -y build-essential libsz2 gh libgmp-dev li
 USER ${NB_USER}
 RUN conda install --yes \
     radian \
-    'conda-forge::hdf5=1.14' \
+    conda-forge::hdf5=1.14 \
+    conda-forge::r-hdf5r \
+    conda-forge::r-seurat \
     conda-forge::scanpy \
     conda-forge::leidenalg && \
     conda clean --all -f -y
 # *** DIAGNOSTIC STEP - Add this to your Dockerfile ***
 RUN find /opt/conda/lib -name "libhdf5_hl*"
 RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
-RUN mkdir -p /usr/local/lib/R/etc && \
-    touch /usr/local/lib/R/etc/Renviron.site && \
-    echo 'R_LD_LIBRARY_PATH=/opt/conda/lib:$R_LD_LIBRARY_PATH' >> /usr/local/lib/R/etc/Renviron.site
-RUN Rscript -e 'install.packages("hdf5r")'
-# RUN Rscript -e 'pak::pkg_install(c( \
-#     "tidyverse", \
-#     "Seurat", \
-#     "targets", \
-#     "crew", \
-#     "skimr", \
-#     "tidyseurat", \
-#     "languageserver", \
-#     "tidySummarizedExperiment", \
-#     "tidybulk", \
-#     "nx10/httpgd", \
-#     "gittargets", \
-#     "huayc09/SeuratExtend", \
-#     "harmony", \
-#     "DESeq2", \
-#     "scuttle", \
-#     "tidyplots", \
-#     "samuel-marsh/scCustomize@release/3.0.0" \
-#     ))' && \
-#     Rscript -e 'remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2")'
-# RUN eval "$(curl https://get.x-cmd.com)"
-# RUN wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb -O /tmp/quarto.deb && sudo dpkg -i /tmp/quarto.deb && rm /tmp/quarto.deb
-# # RUN quarto install tinytex
+# RUN mkdir -p /usr/local/lib/R/etc && \
+#     touch /usr/local/lib/R/etc/Renviron.site && \
+#     echo 'R_LD_LIBRARY_PATH=/opt/conda/lib:$R_LD_LIBRARY_PATH' >> /usr/local/lib/R/etc/Renviron.site
+# RUN Rscript -e 'install.packages("hdf5r")'
+RUN Rscript -e 'pak::pkg_install(c( \
+    "tidyverse", \
+    "targets", \
+    "crew", \
+    "skimr", \
+    "tidyseurat", \
+    "languageserver", \
+    "tidySummarizedExperiment", \
+    "tidybulk", \
+    "nx10/httpgd", \
+    "gittargets", \
+    "huayc09/SeuratExtend", \
+    "harmony", \
+    "DESeq2", \
+    "scuttle", \
+    "tidyplots", \
+    "samuel-marsh/scCustomize@release/3.0.0" \
+    ))' && \
+    Rscript -e 'remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2")'
+RUN eval "$(curl https://get.x-cmd.com)"
+RUN wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb -O /tmp/quarto.deb && sudo dpkg -i /tmp/quarto.deb && rm /tmp/quarto.deb
+# RUN quarto install tinytex
 
