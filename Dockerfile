@@ -70,7 +70,7 @@ RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.e
 # RUN mkdir -p /usr/local/lib/R/etc && \
 #     touch /usr/local/lib/R/etc/Renviron.site && \
 #     echo 'R_LD_LIBRARY_PATH=/opt/conda/lib:$R_LD_LIBRARY_PATH' >> /usr/local/lib/R/etc/Renviron.site
-RUN R -e 'install.packages("hdf5r", configure.args="--with-hdf5=/usr/bin/h5cc")'
+RUN PATH=/usr/bin:$PATH Rscript -e 'install.packages("hdf5r", configure.args="--with-hdf5=/usr/bin/h5cc")'
 # RUN Rscript -e 'pak::pkg_install(c( \
 #     "tidyverse", \
 #     "Seurat", \
