@@ -13,11 +13,11 @@
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "/bin/bash ./.devcontainer/postCreateCommand.sh",
   "runArgs": [
-    "--network=container:mihomo-core"
+    "--network=proxy-network" // 使用用户定义的网络，不再需要 --link
   ],
   "containerEnv": {
-    "http_proxy": "http://127.0.0.1:7890",
-    "https_proxy": "http://127.0.0.1:7890",
+    "http_proxy": "http://mihomo-core:7890",
+    "https_proxy": "http://mihomo-core:7890",
     "no_proxy": "localhost,127.0.0.1"
   },
   // "RunArgs": [
@@ -49,23 +49,33 @@
         "r.rterm.linux": "/opt/conda/bin/radian",
         "r.bracketedPaste": true
       },
-      "quarto.path": "/usr/local/bin/quarto"
+      "quarto.path": "/usr/local/bin/quarto",
+      "extensions": [
+        "ms-toolsai.datawrangler",
+        "ms-python.black-formatter",
+        "oderwat.indent-rainbow",
+        "yzhang.markdown-all-in-one",
+        "samueltscott.maximizeterminal",
+        "christian-kohler.path-intellisense",
+        "ms-python.python",
+        "ms-python.pylint",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "REditorSupport.r",
+        "RDebugger.r-debugger",
+        "mechatroner.rainbow-csv",
+        "RooVeterinaryInc.roo-cline",
+        "foxundermoon.shell-format",
+        "WakaTime.vscode-wakatime",
+        "ms-vscode.vscode-websearchforcopilot",
+        "ms-toolsai.jupyter",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-azuretools.vscode-docker",
+        "quarto.quarto"
+      ]
     },
     // Add the IDs of extensions you want installed when the container is created.
-    "extensions": [
-      "ms-toolsai.jupyter",
-      "ms-python.python",
-      "reditorsupport.r",
-      "GitHub.copilot",
-      "GitHub.copilot-chat",
-      "ms-python.black-formatter",
-      "samueltscott.maximizeterminal",
-      "ms-azuretools.vscode-docker",
-      "ms-toolsai.datawrangler",
-      "WakaTime.vscode-wakatime",
-      "quarto.quarto",
-      "mechatroner.rainbow-csv"
-    ]
   },
   // Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "jovyan"
