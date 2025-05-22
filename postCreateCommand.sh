@@ -19,9 +19,17 @@ echo 'options(languageserver.formatting_style = function(options) {
 })' >>~/.Rprofile
 touch ~/.lintr
 echo 'linters: linters_with_defaults(
-    line_length_linter(120), 
-    commented_code_linter = NULL
-  )' >>~/.lintr
+  line_length_linter    = NULL, # note: vscode-R default is 120
+  cyclocomp_linter      = NULL, # same as vscode-R
+  object_name_linter    = NULL, # same as vscode-R
+  object_usage_linter   = NULL, # same as vscode-R
+  commented_code_linter = NULL,
+  assignment_linter     = NULL,
+  single_quotes_linter  = NULL,
+  semicolon_linter      = NULL,
+  seq_linter            = NULL,
+  indentation_linter    = NULL
+)' >>~/.lintr
 # set git user name "h4rvey-g" and email "babaolanqiu@gmail.com"
 git config --global user.name "h4rvey-g"
 git config --global user.email "babaolanqiu@gmail.com"

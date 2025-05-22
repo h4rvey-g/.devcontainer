@@ -12,14 +12,14 @@
   // ],
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "/bin/bash ./.devcontainer/postCreateCommand.sh",
-  "runArgs": [
-    "--network=proxy-network" // 使用用户定义的网络，不再需要 --link
-  ],
-  "containerEnv": {
-    "http_proxy": "http://mihomo-core:7890",
-    "https_proxy": "http://mihomo-core:7890",
-    "no_proxy": "localhost,127.0.0.1"
-  },
+  // "runArgs": [
+  //   "--network=proxy-network" // 使用用户定义的网络，不再需要 --link
+  // ],
+  // "containerEnv": {
+  //   "http_proxy": "http://mihomo-core:7890",
+  //   "https_proxy": "http://mihomo-core:7890",
+  //   "no_proxy": "localhost,127.0.0.1"
+  // },
   // "RunArgs": [
   //   "--user",
   //   "root"
@@ -48,6 +48,10 @@
         "r.rpath.linux": "/usr/bin/R",
         "r.rterm.linux": "/opt/conda/bin/radian",
         "r.bracketedPaste": true
+        // "http.proxy": "http://mihomo-core:7890",
+        // "https.proxy": "http://mihomo-core:7890",
+        // "http.proxyStrictSSL": false, // Optional (adjust as needed)
+        // "http.proxySupport": "on" // Important!
       },
       "quarto.path": "/usr/local/bin/quarto",
       "extensions": [
@@ -71,8 +75,8 @@
         "ms-toolsai.jupyter",
         "GitHub.copilot",
         "GitHub.copilot-chat",
-        "ms-azuretools.vscode-docker",
-        "quarto.quarto"
+        "quarto.quarto",
+        "analytic-signal.preview-tiff"
       ]
     },
     // Add the IDs of extensions you want installed when the container is created.

@@ -88,7 +88,15 @@ RUN Rscript -e 'pak::pkg_install(c( \
     "DESeq2", \
     "scuttle", \
     "tidyplots", \
-    "samuel-marsh/scCustomize@release/3.0.0" \
+    "saezlab/liana", \
+    "scDblFinder", \
+    "foreach", \
+    "SingleCellExperiment", \
+    "BiocParallel", \
+    "EnhancedVolcano", \
+    "RColorBrewer", \
+    "ggalign", \
+    "scCustomize" \
     ))' && \
     Rscript -e 'remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2")'
 RUN eval "$(curl https://get.x-cmd.com)"
