@@ -85,7 +85,7 @@ RUN conda install --yes \
 RUN find /opt/conda/lib -name "libhdf5_hl*"
 
 # R Package Installation and CRITICAL Cleanup
-RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")' && \
+RUN Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io/p/pak/stable/%s/%s/%s", .Platform$pkgType, R.Version()$os, R.Version()$arch))' && \
     # Ensure PATH includes /usr/bin for h5cc if needed during hdf5r configure
     # The --with-hdf5 configure arg for hdf5r might need adjustment based on where h5cc is.
     # If conda's hdf5 is preferred, you might need to point to conda's lib/include.
