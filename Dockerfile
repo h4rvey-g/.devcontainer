@@ -121,8 +121,8 @@ RUN Rscript -e 'install.packages("pak", repos = "https://mirrors.tuna.tsinghua.e
     )); \
     remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2"); \
     /* CRITICAL: Clean R package caches and temporary files */ \
-    pak::cleanup()
-'
+    pak::cleanup() \
+    '
 
 RUN eval "$(curl https://get.x-cmd.com)"
 RUN wget -q https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb -O /tmp/quarto.deb && sudo dpkg -i /tmp/quarto.deb && rm /tmp/quarto.deb
