@@ -120,7 +120,6 @@ RUN Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io
     "scCustomize" \
     )); \
     remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2"); \
-    /* CRITICAL: Clean R package caches and temporary files */ \
     pak::cleanup() \
     '
 
