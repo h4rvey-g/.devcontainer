@@ -26,7 +26,7 @@ RUN apt-get update && \
     r-cran-docopt \
     # For hdf5r and other compiled packages
     build-essential \
-    libsz2-dev \
+    libsz2 \
     gh \
     libgmp-dev \
     libcurl4-openssl-dev \
