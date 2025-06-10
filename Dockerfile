@@ -34,6 +34,8 @@ RUN apt-get update && \
     libopenblas-dev \
     # For Quarto dependencies if any (e.g. libfontconfig1) - check Quarto docs if needed
     libfontconfig1 \
+    nodejs \
+    npm \
     && wget -q -O - https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc \
     | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc  && \
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" && \
@@ -117,9 +119,14 @@ RUN Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io
     "EnhancedVolcano", \
     "RColorBrewer", \
     "ggalign", \
+    "sccomp", \
+    "DelayedMatrixStats", \
     "scCustomize" \
     )); \
     remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2"); \
+    install.packages("cmdstanr", repos = c("https://stan-dev.r-universe.dev/", getOption("repos"))); \
+    cmdstanr::check_cmdstan_toolchain(fix = TRUE); \
+    cmdstanr::install_cmdstan(); \
     pak::pak_cleanup(force = TRUE) \
     '
 
