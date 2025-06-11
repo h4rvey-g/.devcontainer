@@ -12,10 +12,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Delete huge unnecessary tools folder
-        run: rm -rf /opt/hostedtoolcache
+      - name: Maximize Build Disk Space
+        run: |
+          echo "Initial disk space:"
+          df -h
+          sudo rm -rf /opt/hostedtoolcache # You have this
+          sudo rm -rf /usr/share/dotnet   # If you don't need .NET SDKs
+          sudo rm -rf /usr/local/lib/android # If you don't need Android SDKs
+          sudo rm -rf /opt/ghc # If you don't need Haskell GHC
+          # Optional: Clean apt cache on the runner itself, though this has less impact on Docker build space
+          # sudo apt-get clean
+          # sudo apt-get autoremove -y
+          echo "Disk space after cleaning common large directories:"
+          df -h
+          # If docker is available on the runner and has old images, prune them
+          # This is less likely to be an issue with fresh runners but can help in some contexts
+          # Be cautious if your workflow relies on pre-cached Docker images on the runner
+          if command -v docker &> /dev/null; then
+            echo "Pruning docker images and builder cache..."
+            docker image prune -af
+            docker builder prune -af
+          else
+            echo "Docker command not found, skipping Docker prune."
+          fi
+          echo "Final disk space before build:"
+          df -h
       - uses: actions/checkout@v4
-
       - name: Build Image
         id: build-image
         uses: redhat-actions/buildah-build@v2
