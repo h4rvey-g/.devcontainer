@@ -12,6 +12,10 @@
   // ],
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "/bin/bash ./.devcontainer/postCreateCommand.sh",
+  "runArgs": [
+    "--sysctl",
+    "fs.inotify.max_user_watches=524288"
+  ],
   // "runArgs": [
   //   "--network=proxy-network" // 使用用户定义的网络，不再需要 --link
   // ],
