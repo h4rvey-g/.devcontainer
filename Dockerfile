@@ -121,6 +121,8 @@ RUN Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io
     "ggalign", \
     "sccomp", \
     "DelayedMatrixStats", \
+    "clusterProfiler", \
+    "welch-lab/liger", \
     "scCustomize" \
     )); \
     remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2"); \
