@@ -32,6 +32,7 @@ RUN apt-get update && \
     libcurl4-openssl-dev \
     libhdf5-dev \
     libopenblas-dev \
+    libtbb-dev \
     # For Quarto dependencies if any (e.g. libfontconfig1) - check Quarto docs if needed
     libfontconfig1 \
     nodejs \
@@ -121,10 +122,10 @@ RUN Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io
     "ggalign", \
     "sccomp", \
     "DelayedMatrixStats", \
-    "clusterProfiler", \
-    "welch-lab/liger", \
+    "cellgeni/schard", \
     "scCustomize" \
     )); \
+    remotes::install_cran("qs", type = "source", configure.args = "--with-simd=AVX2"); \
     remotes::install_cran("qs2", type = "source", configure.args = "--with-TBB --with-simd=AVX2"); \
     install.packages("cmdstanr", repos = c("https://stan-dev.r-universe.dev/", getOption("repos"))); \
     cmdstanr::check_cmdstan_toolchain(fix = TRUE); \
