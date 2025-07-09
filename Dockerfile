@@ -123,6 +123,7 @@ RUN Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io
     "sccomp", \
     "DelayedMatrixStats", \
     "cellgeni/schard", \
+    "mojaveazure/seurat-disk", \
     "scCustomize" \
     )); \
     remotes::install_cran("qs", type = "source", configure.args = "--with-simd=AVX2"); \
