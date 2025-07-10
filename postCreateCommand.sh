@@ -2,6 +2,19 @@
 #   pip install -r requirements.txt
 # else pip install pandas numpy matplotlib seaborn scikit-learn; fi
 # fix permission issue
+# Ensure the .ssh directory exists for the jovyan user
+mkdir -p ~/.ssh
+
+# Set the correct, strict permissions for the mounted SSH key.
+chmod 600 ~/.ssh/id_rsa
+
+# Automatically add the host's key to known_hosts to avoid interactive prompts.
+# This is crucial for automation.
+ssh-keyscan -H host.docker.internal >> ~/.ssh/known_hosts
+chmod 644 ~/.ssh/known_hosts
+# echo "SSH configuration complete. You can now connect to the host using:"
+# Use the environment variable passed from devcontainer.json
+# echo "ssh ${HOST_USER}@host.docker.internal"
 sudo chmod 777 /usr/local/lib/R/site-library/_cache/
 # enable vscode R support
 echo 'if (interactive() && Sys.getenv("RSTUDIO") == "") {

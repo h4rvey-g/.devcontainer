@@ -11,19 +11,26 @@
   //   "ghcr.io/rocker-org/devcontainer-features/r-apt"
   // ],
   // Use 'postCreateCommand' to run commands after the container is created.
+  "initializeCommand": "/bin/bash ./.devcontainer/initialize-host.sh",
   "postCreateCommand": "/bin/bash ./.devcontainer/postCreateCommand.sh",
   "runArgs": [
     "--sysctl",
-    "fs.inotify.max_user_watches=524288"
+    "fs.inotify.max_user_watches=524288",
+    "--add-host=host.docker.internal:host-gateway"
+  ],
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+    "source=${localEnv:HOME}/.ssh/devcontainer_id_rsa,target=/home/jovyan/.ssh/id_rsa,type=bind,consistency=cached"
   ],
   // "runArgs": [
   //   "--network=proxy-network" // 使用用户定义的网络，不再需要 --link
   // ],
-  // "containerEnv": {
-  //   "http_proxy": "http://mihomo-core:7890",
-  //   "https_proxy": "http://mihomo-core:7890",
-  //   "no_proxy": "localhost,127.0.0.1"
-  // },
+  "containerEnv": {
+    "HOST_USER": "${localEnv:USER}"
+    //   "http_proxy": "http://mihomo-core:7890",
+    //   "https_proxy": "http://mihomo-core:7890",
+    //   "no_proxy": "localhost,127.0.0.1"
+  },
   // "RunArgs": [
   //   "--user",
   //   "root"

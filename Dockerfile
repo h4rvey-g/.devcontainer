@@ -77,6 +77,7 @@ RUN conda install --yes \
     'conda-forge::hdf5=1.14' \
     conda-forge::scanpy \
     conda-forge::leidenalg && \
+    conda-forge::pyarrow && \
     # CRITICAL: Conda cleanup
     conda clean --all -f -y && \
     # Remove user-level conda cache if any
