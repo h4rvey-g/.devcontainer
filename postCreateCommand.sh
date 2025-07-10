@@ -42,7 +42,7 @@ echo 'linters: linters_with_defaults(
   semicolon_linter      = NULL,
   seq_linter            = NULL,
   indentation_linter    = NULL
-)' >>~/.lintr
+  )' >>~/.lintr
 # set git user name "h4rvey-g" and email "babaolanqiu@gmail.com"
 git config --global user.name "h4rvey-g"
 git config --global user.email "babaolanqiu@gmail.com"
