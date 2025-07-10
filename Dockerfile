@@ -76,7 +76,7 @@ RUN conda install --yes \
     radian \
     'conda-forge::hdf5=1.14' \
     conda-forge::scanpy \
-    conda-forge::leidenalg && \
+    conda-forge::leidenalg \
     conda-forge::pyarrow && \
     # CRITICAL: Conda cleanup
     conda clean --all -f -y && \
