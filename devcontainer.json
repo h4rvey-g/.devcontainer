@@ -87,7 +87,8 @@
         "GitHub.copilot",
         "GitHub.copilot-chat",
         "quarto.quarto",
-        "analytic-signal.preview-tiff"
+        "analytic-signal.preview-tiff",
+        "Posit.air-vscode"
       ]
     },
     // Add the IDs of extensions you want installed when the container is created.
