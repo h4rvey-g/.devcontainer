@@ -3,9 +3,9 @@
   "image": "quay.io/babaolanqiu/datascience:latest",
   // "initializeCommand": "docker pull quay.io/babaolanqiu/datascience:latest",
   // Features to add to the dev container. More info: https://containers.dev/features.
-  // "features": {
-  // "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  // },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
   "shutdownAction": "none",
   // "overrideFeatureInstallOrder": [
   //   "ghcr.io/rocker-org/devcontainer-features/r-apt"
@@ -14,12 +14,12 @@
   "initializeCommand": "/bin/bash ./.devcontainer/initialize-host.sh",
   "postCreateCommand": "/bin/bash ./.devcontainer/postCreateCommand.sh",
   "runArgs": [
-    "--sysctl",
-    "fs.inotify.max_user_watches=524288",
+    // "--sysctl",
+    // "fs.inotify.max_user_watches=524288",
     "--add-host=host.docker.internal:host-gateway"
   ],
   "mounts": [
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+    // "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
     "source=${localEnv:HOME}/.ssh/devcontainer_id_rsa,target=/home/jovyan/.ssh/id_rsa,type=bind,consistency=cached"
   ],
   // "runArgs": [

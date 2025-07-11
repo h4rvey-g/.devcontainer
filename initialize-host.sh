@@ -37,3 +37,25 @@ fi
 chmod 600 "$AUTHORIZED_KEYS_FILE"
 
 echo "Host SSH setup complete."
+
+# --- Define the images ---
+OFFICIAL_IMAGE="docker.io/docker/dockerfile:1.4"
+MIRROR_IMAGE="docker.1ms.run/docker/dockerfile:1.4"
+
+echo "(*) Checking for required Docker images on the host..."
+
+# Check if the official image already exists locally on the host
+if ! docker image inspect "${OFFICIAL_IMAGE}" > /dev/null 2>&1; then
+    echo "--> Image '${OFFICIAL_IMAGE}' not found locally."
+    echo "--> Pulling from mirror: ${MIRROR_IMAGE}"
+    docker pull "${MIRROR_IMAGE}"
+
+    echo "--> Tagging '${MIRROR_IMAGE}' as '${OFFICIAL_IMAGE}'"
+    docker tag "${MIRROR_IMAGE}" "${OFFICIAL_IMAGE}"
+
+    echo "--> Image pre-caching complete."
+else
+    echo "--> Image '${OFFICIAL_IMAGE}' is already cached. Skipping pull."
+fi
+
+echo "(*) Host initialization complete."

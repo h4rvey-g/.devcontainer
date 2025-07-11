@@ -59,6 +59,10 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Install uv
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
+    uvx --from context-portal-mcp conport-mcp --help
+
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
@@ -101,6 +105,7 @@ RUN Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io
     "Seurat", \
     "targets", \
     "crew", \
+    "furrr", \
     "skimr", \
     "tidyseurat", \
     "languageserver", \

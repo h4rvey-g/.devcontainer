@@ -6,6 +6,7 @@
 mkdir -p ~/.ssh
 
 # Set the correct, strict permissions for the mounted SSH key.
+sudo chown -R jovyan:users ~/.ssh
 chmod 600 ~/.ssh/id_rsa
 
 # Automatically add the host's key to known_hosts to avoid interactive prompts.
