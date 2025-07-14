@@ -77,7 +77,9 @@ RUN echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/added-by-start-sc
 USER ${NB_USER}
 
 # Conda installations and cleanup
-RUN conda install --yes \
+RUN mkdir -p /home/${NB_USER}/.cache/conda && \
+    chown -R ${NB_USER}:${NB_GID} /home/${NB_USER}/.cache && \
+    conda install --yes \
     radian \
     'conda-forge::hdf5=1.14' \
     conda-forge::scanpy \
