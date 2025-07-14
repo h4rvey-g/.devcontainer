@@ -74,12 +74,14 @@ RUN echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/added-by-start-sc
 # Ensure libhdf5-dev is installed if hdf5r needs to compile against system HDF5
 # Already included in the consolidated apt-get install above.
 
+# Create cache directory as root before switching user
+RUN mkdir -p /home/${NB_USER}/.cache/conda && \
+    chown -R ${NB_USER}:${NB_GID} /home/${NB_USER}/.cache
+
 USER ${NB_USER}
 
 # Conda installations and cleanup
-RUN mkdir -p /home/${NB_USER}/.cache/conda && \
-    chown -R ${NB_USER}:${NB_GID} /home/${NB_USER}/.cache && \
-    conda install --yes \
+RUN conda install --yes \
     radian \
     'conda-forge::hdf5=1.14' \
     conda-forge::scanpy \
