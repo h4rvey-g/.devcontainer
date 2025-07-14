@@ -61,6 +61,7 @@ RUN apt-get update && \
 
 # Install uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
+    source $HOME/.local/bin/env && \
     uvx --from context-portal-mcp conport-mcp --help
 
 ENV LC_ALL=en_US.UTF-8
