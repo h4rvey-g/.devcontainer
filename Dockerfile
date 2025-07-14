@@ -66,7 +66,7 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=UTC
+ENV TZ=Asia/Shanghai
 
 # add ${NB_UID} to NOPASSWD sudoers
 RUN echo "${NB_USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/added-by-start-script
